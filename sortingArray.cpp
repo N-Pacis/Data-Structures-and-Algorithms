@@ -5,6 +5,9 @@ using namespace std;
 class Sorting{
     private:
         int temp;
+        int key;
+        int p;
+        int n ;
     public:
         int * sortArrayAsc(int n , int *numbers){
             for(int i=0;i<n - 1;i++){
@@ -18,10 +21,35 @@ class Sorting{
             }
             return numbers;           
         }
+        
+        int * insertionSortAsc(int n,int *arr){
+            for(int i = 1;i<n;i++){
+                key = arr[i];
+                p = i - 1;
+                for(;p>=0&&arr[p]>key;p--){
+                    arr[p+1] = arr[p];
+                }
+                arr[p+1] = key;
+            }
+            return arr;
+        }
+
+        int output(int size,int outputArr[]){
+            cout<<"Output: [";
+            for(int i=0;i<size;i++){
+                if(i != size -1){
+                    cout<<*(outputArr + i)<<", ";
+                }
+                else{
+                    cout<<*(outputArr + i);
+                }
+            }
+        cout<<"]";        
+        }
 };
 
 int main(){
-    int n ;
+    int n;
     cout<<"Enter the number of elements"<<endl;
     cin>>n;
     int arr[n];
@@ -29,7 +57,7 @@ int main(){
         cout<<"Enter number "<<(i+1)<<endl;
         cin>>arr[i];
     }
-    cout<<"---------------------------------------"<<endl;
+    cout<<"----------------------------------------"<<endl;
     cout<<"Input: ";
     cout<<"[";
     for(int i=0;i<n;i++){
@@ -43,17 +71,7 @@ int main(){
     cout<<"]"<<endl;
     cout<<endl;
     Sorting sort;
-    int * sorted = sort.sortArrayAsc(n,arr);
-    
-    cout<<"Output: [";
-    for(int i=0;i<n;i++){
-        if(i != n -1){
-            cout<<*(sorted + i)<<", ";
-        }
-        else{
-            cout<<*(sorted + i);
-        }
-    }
-    cout<<"]";
+    int *sorted = sort.insertionSortAsc(n,arr);
+    sort.output(n,sorted);
     return 0;
 }
