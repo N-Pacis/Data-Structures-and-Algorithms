@@ -34,6 +34,26 @@ class Sorting{
             return arr;
         }
 
+        int * selectionSortAsc(int n, int *arr){
+            for(int i=0;i<n-1;i++){
+                int min_index = i;
+                for(int j=i+1;j<n;j++){
+                    if(arr[j] < arr[min_index]){
+                        min_index = j;
+                    }
+                }
+                if(arr[i] != arr[min_index]){
+                    temp = arr[i];
+                    arr[i] = arr[min_index];
+                    arr[min_index] = temp;
+                }
+                cout<<(i+1)<<" step: ";
+                output(n,arr);
+                cout<<endl;
+            }
+            return arr;
+        }
+
         int output(int size,int outputArr[]){
             cout<<"Output: [";
             for(int i=0;i<size;i++){
@@ -71,7 +91,7 @@ int main(){
     cout<<"]"<<endl;
     cout<<endl;
     Sorting sort;
-    int *sorted = sort.insertionSortAsc(n,arr);
+    int *sorted = sort.selectionSortAsc(n,arr);
     sort.output(n,sorted);
     return 0;
 }
