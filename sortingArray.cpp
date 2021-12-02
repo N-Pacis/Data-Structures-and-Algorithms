@@ -9,17 +9,20 @@ class Sorting{
         int p;
         int n ;
     public:
-        int * sortArrayAsc(int n , int *numbers){
+        int * bubbleSortArrayAsc(int n , int *arr){
             for(int i=0;i<n - 1;i++){
                 for(int j = i+1;j<n;j++){
-                    if(*(numbers+i) > *(numbers + j)){
-                        temp = *(numbers+i);
-                        *(numbers+i) = *(numbers+j);
-                        *(numbers+j) = temp;
+                    if(arr[i] > arr[j]){
+                        temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
                     }
                 }
+                cout<<(i+1)<<" step: ";
+                output(n,arr);
+                cout<<endl;
             }
-            return numbers;           
+            return arr;           
         }
         
         int * insertionSortAsc(int n,int *arr){
@@ -91,7 +94,7 @@ int main(){
     cout<<"]"<<endl;
     cout<<endl;
     Sorting sort;
-    int *sorted = sort.selectionSortAsc(n,arr);
+    int *sorted = sort.bubbleSortArrayAsc(n,arr);
     sort.output(n,sorted);
     return 0;
 }
