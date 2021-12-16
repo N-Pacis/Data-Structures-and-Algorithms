@@ -28,8 +28,7 @@ class Sorting{
         int * insertionSortAsc(int n,int *arr){
             for(int i = 1;i<n;i++){
                 key = arr[i];
-                p = i - 1;
-                for(;p>=0&&arr[p]>key;p--){
+                for(p = i - 1;p>=0&&arr[p]>key;p--){
                     arr[p+1] = arr[p];
                 }
                 arr[p+1] = key;
