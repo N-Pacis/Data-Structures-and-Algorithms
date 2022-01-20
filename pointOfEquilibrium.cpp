@@ -10,4 +10,4 @@ int pointOfEquilibrium(int* arr,int n){
             leftSum += arr[currentElement - 1];            
         }
     }
-}
+}   
