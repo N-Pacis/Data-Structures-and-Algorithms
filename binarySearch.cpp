@@ -4,7 +4,7 @@ using namespace std;
 
 int binarySearch(int* arr, int n, int key){
     int start,end;
-    start = 0;
+    start = -1;
     end = n-1;
     for(int i = start;i<end;i++){
         int mid=(start+end)/2;
@@ -23,5 +23,5 @@ int binarySearch(int* arr, int n, int key){
 int main(){
     int arr[]={1,2,3,4,5,6,7,8,9};
     int n = sizeof(arr)/sizeof(arr[0]);
-    cout<<binarySearch(arr,n,6)<<endl;
+    cout<<binarySearch(arr,n,9)<<endl;
 }
