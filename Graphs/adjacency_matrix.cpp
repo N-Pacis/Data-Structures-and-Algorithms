@@ -25,9 +25,32 @@ class AdjacencyMatrix{
                 cout<<""<<endl;
             }
         }
+
+        void add_edge(int origin,int destination){
+            if(origin <0 || destination < 0 || origin >= nodes || destination >= nodes){
+                cout<<"Invalid Node"<<endl;
+                return;
+            }
+            adjMatrix[origin][destination] = 1;
+        }
+
+        void delete_edge(int origin,int destination){
+            if(origin <0 || destination < 0 || origin >= nodes || destination >= nodes){
+                cout<<"Invalid Node"<<endl;
+                return;
+            }
+            adjMatrix[origin][destination] = 0;
+        }
 };
 
 int main(){
     AdjacencyMatrix mat(5);
     mat.display();
+    mat.add_edge(0,1);
+    cout<<"---------------"<<endl;
+    mat.display();
+    mat.delete_edge(0,1);
+    cout<<"---------------"<<endl;
+    mat.display();
+    return 0;
 }
