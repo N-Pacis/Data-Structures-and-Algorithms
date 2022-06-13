@@ -1,10 +1,23 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include<vector>
 using namespace std;
-
 void add_edge(vector<int> adj[], int s, int d)
 {
     adj[s].push_back(d);
     adj[d].push_back(s);
+}
+
+void remove_edge(vector<int> adj[],int src,int dst){
+    for(int i=0;i<adj[src].size();i++){
+        if(adj[src][i] == dst){
+            adj[src].erase(adj[src].begin()+i);
+        }
+    }
+    for(int i=0;i<adj[dst].size();i++){
+        if(adj[dst][i] == src){
+            adj[dst].erase(adj[dst].begin() + i);
+        }
+    }
 }
 
 void print_graph(vector<int> adj[], int V)
@@ -16,7 +29,7 @@ void print_graph(vector<int> adj[], int V)
         {
             cout << " -> " << x;
         }
-        printf("\n");
+        cout<<"\n";
     }
 }
 
