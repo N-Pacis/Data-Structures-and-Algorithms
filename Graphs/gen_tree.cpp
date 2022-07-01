@@ -21,16 +21,16 @@ Node *addNode(Node *parent, int value)
 }
 
 void display(Node * root){
-    list <Node *> que;
-    que.push_back(root);
+    list <Node *> queue;
+    queue.push_back(root);
     
-    while(!que.empty()){
-        Node* current = que.front();
+    while(!queue.empty()){
+        Node* current = queue.front();
         cout<<current->value<<" -> ";
         for(auto i:current->children){
-            que.push_back(i);
+            queue.push_back(i);
         }
-        que.pop_front();
+        queue.pop_front();
     }
 }
 

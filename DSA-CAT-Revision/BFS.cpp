@@ -1,7 +1,7 @@
 #include <iostream>
 #include <list>
-
 using namespace std;
+
 class Graph{
     int numVertices;
     list<int> * adjList;
@@ -9,18 +9,18 @@ class Graph{
 
     public:
         Graph(int vertices);
-        void add_edge(int src, int dest);
-        void BFS(int startVertex);
+        void add_edge(int src,int dst);
+        void BFS(int start);
 };
 
 Graph::Graph(int vertices){
     numVertices = vertices;
-    adjList = new list<int>[vertices];
-}
+    adjList = new list<int>[numVertices];
+};
 
-void Graph::add_edge(int src,int dest){
-    adjList[src].push_back(dest);
-    adjList[dest].push_back(src);
+void Graph::add_edge(int src,int dst){
+    adjList[src].push_back(dst);
+    adjList[dst].push_back(src);
 }
 
 void Graph::BFS(int startVertex){
@@ -31,14 +31,14 @@ void Graph::BFS(int startVertex){
 
     list<int> queue;
 
-    visited[startVertex] =  true;
+    visited[startVertex] = true;
     queue.push_back(startVertex);
 
     list<int>::iterator i;
 
     while(!queue.empty()){
         int currVertex = queue.front();
-        cout<<"Visited "<<currVertex<<" ";
+        cout<< "Visited "<<currVertex<<" ";
         queue.pop_front();
 
         for(i = adjList[currVertex].begin();i != adjList[currVertex].end();++i){
@@ -53,15 +53,12 @@ void Graph::BFS(int startVertex){
 
 int main(){
     Graph g(4);
-
     g.add_edge(0,1);
     g.add_edge(0,2);
-    g.add_edge(1,2);
-    g.add_edge(2,0);
-    g.add_edge(2, 3);
-    g.add_edge(3, 3);
+    g.add_edge(0,3);
+    g.add_edge(1,3);
+    g.add_edge(2,3);
+    g.add_edge(3,3);
 
-    g.BFS(2);
-
-    return 0;
+    g.BFS(1);
 }
